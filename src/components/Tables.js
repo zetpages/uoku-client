@@ -9,6 +9,7 @@ import { Routes } from "../routes";
 import { pageVisits, pageTraffic, pageRanking } from "../data/tables";
 import transactions from "../data/transactions";
 import commands from "../data/commands";
+import teachers from "../data/teachers";
 
 const ValueChange = ({ value, suffix }) => {
   const valueIcon = value < 0 ? faAngleDown : faAngleUp;
@@ -191,10 +192,10 @@ export const TransactionsTable = () => {
   const totalTransactions = transactions.length;
 
   const TableRow = (props) => {
-    const { invoiceNumber, subscription, price, issueDate, dueDate, status } = props;
-    const statusVariant = status === "Paid" ? "success"
-      : status === "Due" ? "warning"
-        : status === "Canceled" ? "danger" : "primary";
+    const { invoiceNumber, subscription, clients, issueDate, level, teacher, scedule, status } = props;
+    const statusVariant = status === "Обучается" ? "success"
+      : status === "Пауза" ? "warning"
+        : status === "Завершили" ? "danger" : "primary";
 
     return (
       <tr>
@@ -214,18 +215,28 @@ export const TransactionsTable = () => {
           </span>
         </td>
         <td>
-          <span className="fw-normal">
-            {dueDate}
-          </span>
-        </td>
-        <td>
-          <span className="fw-normal">
-            ${parseFloat(price).toFixed(2)}
-          </span>
-        </td>
-        <td>
           <span className={`fw-normal text-${statusVariant}`}>
             {status}
+          </span>
+        </td>
+        <td>
+          <span className="fw-normal">
+            {clients}
+          </span>
+        </td>
+        <td>
+          <span className="fw-normal">
+            {level}
+          </span>
+        </td>
+        <td>
+          <span className="fw-normal">
+            {teacher}
+          </span>
+        </td>
+        <td>
+          <span className="fw-normal">
+            {scedule}
           </span>
         </td>
         <td>
@@ -237,13 +248,13 @@ export const TransactionsTable = () => {
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item>
-                <FontAwesomeIcon icon={faEye} className="me-2" /> View Details
+                <FontAwesomeIcon icon={faEye} className="me-2" /> Детали
               </Dropdown.Item>
               <Dropdown.Item>
-                <FontAwesomeIcon icon={faEdit} className="me-2" /> Edit
+                <FontAwesomeIcon icon={faEdit} className="me-2" /> Изменить
               </Dropdown.Item>
               <Dropdown.Item className="text-danger">
-                <FontAwesomeIcon icon={faTrashAlt} className="me-2" /> Remove
+                <FontAwesomeIcon icon={faTrashAlt} className="me-2" /> Удалить
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -258,13 +269,14 @@ export const TransactionsTable = () => {
         <Table hover className="user-table align-items-center">
           <thead>
             <tr>
-              <th className="border-bottom">#</th>
-              <th className="border-bottom">Bill For</th>
-              <th className="border-bottom">Issue Date</th>
-              <th className="border-bottom">Due Date</th>
-              <th className="border-bottom">Total</th>
-              <th className="border-bottom">Status</th>
-              <th className="border-bottom">Action</th>
+              <th className="border-bottom">ID</th>
+              <th className="border-bottom">Название</th>
+              <th className="border-bottom">Начало Обучения</th>
+              <th className="border-bottom">Статус</th>
+              <th className="border-bottom">Клиенты</th>
+              <th className="border-bottom">Уровень</th>
+              <th className="border-bottom">Отв.Педагог</th>
+              <th className="border-bottom">Расписание</th>
             </tr>
           </thead>
           <tbody>
@@ -275,7 +287,7 @@ export const TransactionsTable = () => {
           <Nav>
             <Pagination className="mb-2 mb-lg-0">
               <Pagination.Prev>
-                Previous
+                Назад
               </Pagination.Prev>
               <Pagination.Item active>1</Pagination.Item>
               <Pagination.Item>2</Pagination.Item>
@@ -283,12 +295,12 @@ export const TransactionsTable = () => {
               <Pagination.Item>4</Pagination.Item>
               <Pagination.Item>5</Pagination.Item>
               <Pagination.Next>
-                Next
+                Вперед
               </Pagination.Next>
             </Pagination>
           </Nav>
           <small className="fw-bold">
-            Showing <b>{totalTransactions}</b> out of <b>25</b> entries
+            Показано <b>{totalTransactions}</b> из <b>25</b> строк
           </small>
         </Card.Footer>
       </Card.Body>
@@ -340,6 +352,126 @@ export const CommandsTable = () => {
             {commands.map(c => <TableRow key={`command-${c.id}`} {...c} />)}
           </tbody>
         </Table>
+      </Card.Body>
+    </Card>
+  );
+};
+
+
+
+export const TeachersTable = () => {
+  const totalTeachers = teachers.length;
+
+  const TableRow = (props) => {
+    const { teacherId, teacherPhoto, teacherName, teacherGender, teacherBirth, teacherContact, teacherStatus, teacherBranch } = props;
+    const statusVariant = teacherStatus === "Активен" ? "success"
+      : teacherStatus === "Отпуск" ? "warning"
+        : teacherStatus === "Уволился" ? "danger" : "primary";
+
+    return (
+      <tr>
+        <td>
+          <Card.Link as={Link} to={Routes.Invoice.path} className="fw-normal">
+            {teacherId}
+          </Card.Link>
+        </td>
+        <td className="teacher_photo_td">
+          <Image src={teacherPhoto} className="rounded-circle" />
+        </td>
+        <td>
+          <span className="fw-normal">
+            {teacherName}
+          </span>
+        </td>
+        <td>
+          <span className="fw-normal">
+            {teacherGender}
+          </span>
+        </td>
+        <td>
+          <span className="fw-normal">
+            {teacherBirth}
+          </span>
+        </td>
+        <td>
+          <span className="fw-normal">
+            {teacherContact}
+          </span>
+        </td>
+        <td>
+          <span className={`fw-normal text-${statusVariant}`}>
+            {teacherStatus}
+          </span>
+        </td>
+        <td>
+          <span className="fw-normal">
+            {teacherBranch}
+          </span>
+        </td>
+        <td>
+          <Dropdown as={ButtonGroup}>
+            <Dropdown.Toggle as={Button} split variant="link" className="text-dark m-0 p-0">
+              <span className="icon icon-sm">
+                <FontAwesomeIcon icon={faEllipsisH} className="icon-dark" />
+              </span>
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <FontAwesomeIcon icon={faEye} className="me-2" /> Детали
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <FontAwesomeIcon icon={faEdit} className="me-2" /> Изменить
+              </Dropdown.Item>
+              <Dropdown.Item className="text-danger">
+                <FontAwesomeIcon icon={faTrashAlt} className="me-2" /> Удалить
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </td>
+      </tr>
+    );
+  };
+
+  return (
+    <Card border="light" className="table-wrapper table-responsive shadow-sm">
+      <Card.Body className="pt-0">
+        <Table hover className="user-table align-items-center">
+          <thead>
+            <tr>
+              <th className="border-bottom">ID</th>
+              <th className="border-bottom">Фото</th>
+              <th className="border-bottom">ФИО</th>
+              <th className="border-bottom">Пол</th>
+              <th className="border-bottom">Дата рож.</th>
+              <th className="border-bottom">Контакты</th>
+              <th className="border-bottom">Статус</th>
+              <th className="border-bottom">Филиалы</th>
+            </tr>
+          </thead>
+          <tbody>
+            {teachers.map(t => <TableRow key={`transaction-${t.teacherId}`} {...t} />)}
+          </tbody>
+        </Table>
+        <Card.Footer className="px-3 border-0 d-lg-flex align-items-center justify-content-between">
+          <Nav>
+            <Pagination className="mb-2 mb-lg-0">
+              <Pagination.Prev>
+                Назад
+              </Pagination.Prev>
+              <Pagination.Item active>1</Pagination.Item>
+              <Pagination.Item>2</Pagination.Item>
+              <Pagination.Item>3</Pagination.Item>
+              <Pagination.Item>4</Pagination.Item>
+              <Pagination.Item>5</Pagination.Item>
+              <Pagination.Next>
+                Вперед
+              </Pagination.Next>
+            </Pagination>
+          </Nav>
+          <small className="fw-bold">
+            Показано <b>{totalTeachers}</b> из <b>25</b> строк
+          </small>
+        </Card.Footer>
       </Card.Body>
     </Card>
   );

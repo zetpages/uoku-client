@@ -4,7 +4,6 @@ import { Row, Col, Card, Modal, Button, Container } from '@themesberg/react-boot
 
 import Documentation from "../../components/Documentation";
 
-
 export default () => {
   const [showDefault, setShowDefault] = useState(false);
   const handleClose = () => setShowDefault(false);
@@ -17,7 +16,7 @@ export default () => {
             <h1 className="h2">Modals</h1>
             <p className="mb-0">
               Use modals to develop faster and more interactive user interfaces.
-          </p>
+            </p>
           </Col>
         </Row>
 

@@ -1,0 +1,90 @@
+.just-p,
+.text-order {
+    color: $mytext !important;
+}
+
+.just-p {
+    font-size: 1.6rem !important;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.img_contain {
+    width: 100%;
+}
+
+.img_contain img {
+    width: 100%;
+}
+
+.flex_text {
+    display: flex;
+    align-items: center;
+}
+
+.bg_transparent {
+    background: $white !important;
+    border-bottom: 1px solid rgba(62, 68, 110, .1);
+}
+
+.ok_btn {
+    width: 10%;
+    margin-right: 10px;
+}
+
+.section_f {
+    background: url("../../../assets/img/section-f.jpg") center / cover no-repeat;
+}
+
+.ok_big_icon {
+    width: 50%;
+    height: 50%;
+    // background: url("../../../assets/img/technologies/ok-logo-dark.svg") center / cover no-repeat;
+
+    img {
+        width: 80%;
+        vertical-align: top;
+    }
+}
+
+.section_w {
+    background: $white !important;
+}
+
+.bg_custom {
+    background-color: #EFF3FF !important;
+}
+
+.active_link {
+    border-bottom: 1px solid $mytext;
+}
+
+
+.btn_control{
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: .55rem 1rem;
+}
+
+.m_icon_size {
+    font-size: 1.25rem !important;
+}
+
+.teacher_photo_td {
+    padding-right: .5rem !important;
+    padding-left: .5rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.extra_table {
+    width: 500px !important;
+    height: 500px !important;
+    background: red !important;
+}

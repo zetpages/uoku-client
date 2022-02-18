@@ -14,12 +14,18 @@
     padding-bottom: $spacer * 3;
 }
 
+.section_header_height {
+    min-height: calc(100vh - 77px) !important;
+}
+
+
 @include media-breakpoint-up(sm) {
     .section {
         position: relative;
         padding-top: $spacer * 5;
         padding-bottom: $spacer * 5;
     }
+
     .section-header {
         position: relative;
         padding-top: $spacer * 8;
@@ -47,8 +53,9 @@
     .section {
         position: relative;
         padding-top: $spacer * 6;
-        padding-bottom: $spacer * 6;
+        padding-bottom: $spacer * 3;
     }
+
     .section-header {
         position: relative;
         padding-top: $spacer * 10;

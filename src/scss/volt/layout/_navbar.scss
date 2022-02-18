@@ -170,7 +170,7 @@
         .btn-outline-soft {
             border-color: $dark;
             color: $dark;
-    
+
             &:hover {
                 background: $dark;
                 color: $white;
@@ -209,8 +209,8 @@
 
         @include media-breakpoint-down(md) {
 
-            .nav-link, 
-            .show > .nav-link, 
+            .nav-link,
+            .show > .nav-link,
             .dropdown-item,
             .list-group-item {
                 &, &:focus, &.active, &:hover {
@@ -219,7 +219,7 @@
             }
         }
     }
-    
+
     .navbar-theme-#{$color} .navbar-nav {
 
         .dropdown-item,
@@ -325,7 +325,7 @@
 
         .dropdown-menu-center {
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-60%);
         }
 
         .dropdown-menu,

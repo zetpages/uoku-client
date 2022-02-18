@@ -7,8 +7,13 @@ import Presentation from "./Presentation";
 import Upgrade from "./Upgrade";
 import DashboardOverview from "./dashboard/DashboardOverview";
 import Transactions from "./Transactions";
-import Settings from "./Settings";
-import BootstrapTables from "./tables/BootstrapTables";
+import Courses from "./Courses";
+import Access from "./Access";
+import ProfileSettings from "./ProfileSettings";
+import GeneralSettings from "./GeneralSettings";
+import ProductItems from "./ProductItems";
+import AllTransactions from "./tables/AllTransactions";
+import Subsciptions from "./tables/Subscriptions";
 import Signin from "./examples/Signin";
 import Signup from "./examples/Signup";
 import ForgotPassword from "./examples/ForgotPassword";
@@ -16,8 +21,17 @@ import ResetPassword from "./examples/ResetPassword";
 import Lock from "./examples/Lock";
 import NotFoundPage from "./examples/NotFound";
 import ServerError from "./examples/ServerError";
+import Docs from "./Docs";
+import Support from "./Support";
+import Contacts from "./Contacts";
 
-// documentation pages
+// user pages
+import Teachers from "./users/Teachers";
+import Pupils from "./users/Pupils";
+import Parents from "./users/Parents";
+import Legals from "./users/Legals";
+import Leads from "./users/Leads";
+
 import DocsOverview from "./documentation/DocsOverview";
 import DocsDownload from "./documentation/DocsDownload";
 import DocsQuickStart from "./documentation/DocsQuickStart";
@@ -58,7 +72,7 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
   }, []);
 
   return (
-    <Route {...rest} render={props => ( <> <Preloader show={loaded ? false : true} /> <Component {...props} /> </> ) } />
+    <Route {...rest} render={props => (<> <Preloader show={loaded ? false : true} /> <Component {...props} /> </>)} />
   );
 };
 
@@ -108,13 +122,22 @@ export default () => (
     <RouteWithLoader exact path={Routes.Lock.path} component={Lock} />
     <RouteWithLoader exact path={Routes.NotFound.path} component={NotFoundPage} />
     <RouteWithLoader exact path={Routes.ServerError.path} component={ServerError} />
+    <RouteWithLoader exact path={Routes.Docs.path} component={Docs} />
+    <RouteWithLoader exact path={Routes.Support.path} component={Support} />
+    <RouteWithLoader exact path={Routes.Contacts.path} component={Contacts} />
 
     {/* pages */}
     <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
     <RouteWithSidebar exact path={Routes.Upgrade.path} component={Upgrade} />
     <RouteWithSidebar exact path={Routes.Transactions.path} component={Transactions} />
-    <RouteWithSidebar exact path={Routes.Settings.path} component={Settings} />
-    <RouteWithSidebar exact path={Routes.BootstrapTables.path} component={BootstrapTables} />
+    <RouteWithSidebar exact path={Routes.Courses.path} component={Courses} />
+    <RouteWithSidebar exact path={Routes.Access.path} component={Access} />
+    <RouteWithSidebar exact path={Routes.Teachers.path} component={Teachers} />
+    <RouteWithSidebar exact path={Routes.ProfileSettings.path} component={ProfileSettings} />
+    <RouteWithSidebar exact path={Routes.GeneralSettings.path} component={GeneralSettings} />
+    <RouteWithSidebar exact path={Routes.ProductItems.path} component={ProductItems} />
+    <RouteWithSidebar exact path={Routes.AllTransactions.path} component={AllTransactions} />
+    <RouteWithSidebar exact path={Routes.Subscriptions.path} component={Subsciptions} />
 
     {/* components */}
     <RouteWithSidebar exact path={Routes.Accordions.path} component={Accordion} />
@@ -133,6 +156,14 @@ export default () => (
     <RouteWithSidebar exact path={Routes.Tabs.path} component={Tabs} />
     <RouteWithSidebar exact path={Routes.Tooltips.path} component={Tooltips} />
     <RouteWithSidebar exact path={Routes.Toasts.path} component={Toasts} />
+
+    {/* users pages */}
+
+    <RouteWithSidebar exact path={Routes.Teachers.path} component={Teachers} />
+    <RouteWithSidebar exact path={Routes.Pupils.path} component={Pupils} />
+    <RouteWithSidebar exact path={Routes.Parents.path} component={Parents} />
+    <RouteWithSidebar exact path={Routes.Legals.path} component={Legals} />
+    <RouteWithSidebar exact path={Routes.Leads.path} component={Leads} />
 
     {/* documentation */}
     <RouteWithSidebar exact path={Routes.DocsOverview.path} component={DocsOverview} />

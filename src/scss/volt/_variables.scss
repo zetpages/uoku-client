@@ -117,6 +117,13 @@ $paypal:        #ecb32c;
 $behance:       #0057ff;
 $reddit:        #E84422;
 
+// My colors
+$myblue:        #2882F2;
+$mytext:        #1B2B66;
+$mytitle:       #1B2B66;
+$mycounter:     #F4A874;
+$mypurple:      #5428D2;
+
 // Brand colors
 $brand-colors: ();
 $brand-colors: map-merge((
@@ -1167,7 +1174,7 @@ $navbar-toggler-transition:         box-shadow .15s ease-in-out;
 $navbar-dark-color:                 rgba($white, 0.9);
 $navbar-dark-hover-color:           rgba($white, 1);
 $navbar-dark-active-color:          $white;
-$navbar-dark-disabled-color:        rgba($white, .9);
+$navbar-dark-disabled-color:        rgba($mytext, .9);
 $navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
 $navbar-dark-toggler-border-color:  rgba($white, .1);
 

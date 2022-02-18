@@ -4,7 +4,7 @@ import { Nav, Row, Col, Card, Image, Navbar, Container } from '@themesberg/react
 
 import Documentation from "../../components/Documentation";
 import ReactLogoPrimary from "../../assets/img/technologies/react-logo-primary.svg";
-import ReactLogoTransparent from "../../assets/img/technologies/react-logo-transparent.svg";
+import ReactLogoTransparent from "../../assets/img/technologies/ok-logo-transparent.svg";
 
 
 export default () => {
@@ -16,7 +16,7 @@ export default () => {
             <h1 className="h2">Navbars</h1>
             <p className="mb-0">
               Use the responsive navigation bar from Volt to add nav items and multi-level nested dropdowns for a seamless navigation.
-          </p>
+            </p>
           </Col>
         </Row>
 
@@ -52,7 +52,7 @@ import ReactLogo from "src/assets/img/technologies/react-logo-transparent.svg";`
           scope={{ useEffect, useState, Nav, Card, Navbar, Image, Container, ReactLogoPrimary, ReactLogo: ReactLogoTransparent }}
           imports={`import React, { useEffect, useState } from "react";
 import { Nav, Card, Navbar, Container } from '@themesberg/react-bootstrap';
-import ReactLogo from "src/assets/img/technologies/react-logo-transparent.svg";
+import ReactLogo from "src/assets/img/technologies/ok-logo-transparent.svg";
 import ReactLogoPrimary from "src/assets/img/technologies/react-logo-primary.svg";`}
           example={`const NavbarThemes = [
   { themeVariant: 'primary', navbarColor: 'dark', brandIcon: ReactLogo },

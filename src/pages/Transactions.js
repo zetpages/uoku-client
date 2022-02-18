@@ -12,16 +12,15 @@ export default () => {
         <div className="d-block mb-4 mb-md-0">
           <Breadcrumb className="d-none d-md-inline-block" listProps={{ className: "breadcrumb-dark breadcrumb-transparent" }}>
             <Breadcrumb.Item><FontAwesomeIcon icon={faHome} /></Breadcrumb.Item>
-            <Breadcrumb.Item>Volt</Breadcrumb.Item>
-            <Breadcrumb.Item active>Transactions</Breadcrumb.Item>
+            <Breadcrumb.Item>Oku</Breadcrumb.Item>
+            <Breadcrumb.Item active>Группы</Breadcrumb.Item>
           </Breadcrumb>
-          <h4>Transactions</h4>
-          <p className="mb-0">Your web analytics dashboard template.</p>
+          <h4>Группы</h4>
         </div>
         <div className="btn-toolbar mb-2 mb-md-0">
           <ButtonGroup>
-            <Button variant="outline-primary" size="sm">Share</Button>
-            <Button variant="outline-primary" size="sm">Export</Button>
+            <Button variant="outline-primary" size="sm">Поделиться</Button>
+            <Button variant="outline-primary" size="sm">Экспортировать</Button>
           </ButtonGroup>
         </div>
       </div>
@@ -33,7 +32,7 @@ export default () => {
               <InputGroup.Text>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>
-              <Form.Control type="text" placeholder="Search" />
+              <Form.Control type="text" placeholder="Поиск" />
             </InputGroup>
           </Col>
           <Col xs={4} md={2} xl={1} className="ps-md-0 text-end">
@@ -57,6 +56,8 @@ export default () => {
       </div>
 
       <TransactionsTable />
+
+      <div className="my-5"></div>
     </>
   );
 };

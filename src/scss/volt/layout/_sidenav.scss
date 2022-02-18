@@ -152,15 +152,14 @@
 			.sidebar-icon {
 				text-align: center;
 			}
-	
-	
+
+
 			@include media-breakpoint-up(md) {
 				& + .content {
 					margin-left: 95px;
-					
 				}
 			}
-	
+
 			max-width: 95px;
 		}
 	}
@@ -218,7 +217,8 @@
 
 .content {
 
-	overflow: visible;
+	// overflow: visible;
+	overflow-x: hidden;
 	padding: 0 $spacer 0 $spacer;
 	@include transition(all .3s);
 

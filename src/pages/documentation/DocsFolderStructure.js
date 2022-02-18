@@ -5,7 +5,7 @@ import { Row, Col, Card, Container } from '@themesberg/react-bootstrap';
 
 export default () => (
   <Container className="px-0">
-    <Row>
+    {/* <Row>
       <Col xs={12} className="p-3">
         <Card>
           <Card.Body>
@@ -50,6 +50,6 @@ export default () => (
           </Card.Body>
         </Card>
       </Col>
-    </Row>
+    </Row> */}
   </Container>
 );
