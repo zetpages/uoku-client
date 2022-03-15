@@ -12,10 +12,11 @@
     position: relative;
     padding-top: $spacer * 9;
     padding-bottom: $spacer * 3;
+    top: -82px;
 }
 
 .section_header_height {
-    min-height: calc(100vh - 77px) !important;
+    // min-height: 100vh !important;
 }
 
 

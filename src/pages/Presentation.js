@@ -1,20 +1,26 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faChessKnight, faCode, faGuitar, faRobot, faBook, faExternalLinkAlt, faTimesCircle, faCheckCircle, faCalendarAlt, faCodeBranch, faShoppingCart, faFolder, faMapMarkedAlt, faPager, faFileCode, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faChessKnight, faCode, faGuitar, faRobot, faBook, faExternalLinkAlt, faTimesCircle, faCheckCircle, faCalendarAlt, faCodeBranch, faShoppingCart, faFolder, faMapMarkedAlt, faPager, faFileCode, faDownload, faStar, faStarHalfAlt, faStarOfLife } from "@fortawesome/free-solid-svg-icons";
 import { faBootstrap, faGithub, faJs, faReact, faSass } from "@fortawesome/free-brands-svg-icons";
-import { Col, Row, Card, Image, Button, Container, ListGroup, Tooltip, OverlayTrigger, Form, Navbar, Nav, Carousel, CarouselItem, CarouselProps, Badge } from '@themesberg/react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Col, Row, Card, Image, Button, Container, NavItem, ListGroup, Tooltip, OverlayTrigger, Form, Navbar, Nav, Carousel, CarouselItem, CarouselProps, Badge, NavDropdown } from '@themesberg/react-bootstrap';
+import { Link, NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Routes } from "../routes";
 import MockupPresentation from "../assets/img/mockup-presentation.png";
 import ReactHero from "../assets/img/technologies/oku-hero-logo.svg";
+import ReactHeroDark from "../assets/img/technologies/oku-hero-logo-dark.svg";
 import ReactMockupImg from "../assets/img/oku-mockup.svg";
 import Section3 from "../assets/img/section-3.svg";
 import Section4 from "../assets/img/section-4.svg";
 import Section5 from "../assets/img/section-5.svg";
 import Section6 from "../assets/img/section-6.svg";
+import ManSvg from "../assets/img/man-svg.svg";
+import ClockSvg from "../assets/img/clock.svg";
+import PhoneShadow from "../assets/img/custom-phone-shadow.png";
+import TopGradient from "../assets/img/top-gradient.svg";
 import SectionFooter from "../assets/img/section-footer.svg";
 import OkLogo from "../assets/img/technologies/ok-logo-dark.svg";
+
 
 export default () => {
   const PagePreview = (props) => {
@@ -57,6 +63,7 @@ export default () => {
     const { name, icon, tooltip, iconColor } = props;
     const color = iconColor ? `text-${iconColor}` : "";
 
+
     return (
       <OverlayTrigger
         trigger={['hover', 'focus']}
@@ -72,14 +79,15 @@ export default () => {
 
   return (
     <>
-      <Navbar expand="lg" className="bg_transparent sticky-top">
+      {/* <Navbar expand="lg" className="bg_transparent">
         <Container className="position-relative justify-content-between px-3">
           <Navbar.Brand as={HashLink} to="#" className="me-lg-3 d-flex align-items-center">
             <Image src={ReactHero} />
           </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
           <div className="d-flex align-items-center">
-            <Navbar.Collapse id="navbar-default-primary">
+            <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="navbar-nav-hover align-items-lg-center">
                 <Nav.Link as={Link} to={Routes.Docs.path}>Докумнтация</Nav.Link>
                 <Nav.Link as={Link} to={Routes.Support.path}>Поддержа</Nav.Link>
@@ -92,34 +100,80 @@ export default () => {
             <Button as={Link} to={Routes.Signin.path} variant="outline-dark" className="ms-3">Войти</Button>
           </div>
         </Container>
+      </Navbar> */}
+
+      <Navbar collapseOnSelect expand="lg" className="bg_transparent">
+        <Container className="position-relative justify-content-between px-3">
+          <Navbar.Brand as={HashLink} to="#" className="me-lg-3 d-flex align-items-center">
+            <Image src={ReactHero} />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="navbar-nav-hover align-items-lg-center">
+              <Nav.Link as={Link} to={Routes.Docs.path}>Докумнтация</Nav.Link>
+              <Nav.Link as={Link} to={Routes.Support.path}>Поддержа</Nav.Link>
+              <Nav.Link as={Link} to={Routes.Contacts.path}>Контакты</Nav.Link>
+            </Nav>
+            <Nav>
+              <Button as={Link} to={Routes.Signin.path} variant="outline-dark" className="ms-3">Войти</Button>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
       </Navbar>
-      <section className="section-header section_header_height overflow-hidden pt-9 pb-8 pb-lg-12 bg_custom text-white" id="home">
+
+
+
+
+
+      <section className="section-header section_header_height overflow-hidden pt-9 pb-2 pb-lg-2 bg_custom text-white" id="home">
         <Container>
           <Row>
-            <Col xs={12} className="text-center">
+            <Col lg={6} className="text-left">
               <div className="react-big-icon d-none d-lg-block ok_big_icon">
-                <Image src={OkLogo} />
+                <Image src={TopGradient} />
               </div>
-              <h1 className="fw-bolder text-order">CRM для образовательных центров:</h1>
-              <p className="just-p fw-light mb-5">Самый удобный и быстрый способ развития образовательных учреждений</p>
-              <div className="d-flex align-items-center justify-content-center">
-                <Button variant="secondary" as={Link} to={Routes.Signup.path} className="text-dark me-3">
-                  Использовать бесплатно <FontAwesomeIcon icon={faExternalLinkAlt} className="d-none d-sm-inline ms-1" />
+              <h1 className="fw-bolder text-order custom-aqum__regular">CRM для образовательных центров:</h1>
+              <div className="d-flex align-items-center mb-5 custom-clock__container">
+                <Image src={ClockSvg} />
+                <p className="just-p fw-light">Самый удобный и быстрый способ развития образовательных учреждений</p>
+              </div>
+              <div className="d-flex align-items-center justify-content-left">
+                <Button variant="secondary" as={Link} to={Routes.Signup.path} className="text-dark me-3 custom-btn__rounded">
+                  Использовать бесплатно <FontAwesomeIcon icon={faStarOfLife} className="d-none d-sm-inline ms-1" />
                 </Button>
               </div>
               <div className="d-flex justify-content-center flex-column mb-6 mb-lg-5 mt-5">
-                <div className="text-center">
+                <div className="text-left">
                   <a href="https://skilland.site" target="_blank">
-                    <p className="text-muted font-small m-0">Продукт разработан в Skilland</p>
+                    <p className="text-muted font-small mx-2">Продукт разработан в Skilland</p>
                   </a>
                 </div>
               </div>
             </Col>
+            <Col lg={6} className="custom-img__man d-none d-lg-block">
+              <Image src={ManSvg} alt="Calendar Preview" />
+            </Col>
           </Row>
+
+
+          <Row className="justify-content-between align-items-center mb-4 mb-lg-2">
+            <Col lg={5} className="order-lg-1 d-flex justify-content-center align-items-center custom__circle-container mb-6">
+              <Image src={PhoneShadow} alt="Calendar Preview" />
+            </Col>
+            <Col lg={6} className="order-lg-2 mb-5 mb-lg-0 custom-info__container">
+              <h2>Автоматизация вашей школы и рост продаж</h2>
+              <p className="mb-4 left-line">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus eligendi ut officia, ullam odio earum ea praesentium laboriosam neque aspernatur non! Aliquam, voluptatem dolorum!</p>
+              <p className="mb-4 left-line">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus eligendi ut officia, ullam odio earum ea praesentium laboriosam neque aspernatur non! Aliquam, voluptatem dolorum!</p>
+              <p className="mb-4 left-line">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus eligendi ut officia, ullam odio earum ea praesentium laboriosam neque aspernatur non! Aliquam, voluptatem dolorum!</p>
+              <p className="mb-4 left-line">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus eligendi ut officia, ullam odio earum ea praesentium laboriosam neque aspernatur non! Aliquam, voluptatem dolorum!</p>
+            </Col>
+          </Row>
+
+
         </Container>
-        <figure className="position-absolute img_contain bottom-0 left-0 w-100 d-none d-md-block mb-n2">
+        {/* <figure className="position-absolute img_contain bottom-0 left-0 w-100 d-none d-md-block mb-n2">
           <Image src={MockupPresentation} alt="Mockup presentation" />
-        </figure>
+        </figure> */}
       </section>
 
       <section className="section section-md bg-soft pt-lg-3">
@@ -269,7 +323,7 @@ export default () => {
           <Row className="justify-content-between align-items-center">
             <Col md={4}>
               <Navbar.Brand as={HashLink} to="#home" className="me-lg-3 mb-3">
-                <Image className="mb-3" src={ReactHero} />
+                <Image className="mb-3" src={ReactHeroDark} />
               </Navbar.Brand>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus eligendi ut officia.</p>
             </Col>
@@ -290,7 +344,7 @@ export default () => {
                   </div>
                   <div className="col-12">
                     <button type="submit" className="btn btn-secondary text-dark shadow-soft btn-block" data-loading-text="Sending">
-                      <span>Subscribe</span>
+                      <span>Подписаться</span>
                     </button>
                   </div>
                 </div>

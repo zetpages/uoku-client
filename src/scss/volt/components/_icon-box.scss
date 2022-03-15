@@ -189,17 +189,19 @@
 
 .react-big-icon {
 	position: absolute;
-	opacity: .02;
+	opacity: 1;
 
 	@include media-breakpoint-up(lg) {
-		right: -5%;
-		bottom: 30%;
+		right: -40%;
+		// bottom: 0%;
+		top: -10%;
 		font-size: 800px;
 	}
 
 	@include media-breakpoint-up(xl) {
-		right: -10%;
-		bottom: 30%;
+		right: -40%;
+		// bottom: 0%;
+		top: -12%;
 		font-size: 800px;
 	}
 

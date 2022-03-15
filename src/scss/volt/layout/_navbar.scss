@@ -16,6 +16,9 @@
 .navbar .navbar-nav {
 
     .nav-link {
+        color: $white;
+        font-weight: 800;
+        font-size: 18px;
         @include transitions(.8s, $transition-base);
 
         @include media-breakpoint-down(md) {
@@ -144,7 +147,7 @@
     }
 
     img {
-        height: 27px;
+        height: 50px;
     }
 }
 

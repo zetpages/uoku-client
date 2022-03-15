@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&display=swap');
 
 // Bootstrap mixins and functions
 @import "../../node_modules/bootstrap/scss/mixins";
@@ -27,4 +30,6 @@
 // Components
 @import "volt/components";
 
+// Fonts
+@import "volt/fonts"
 // write your custom styles here!

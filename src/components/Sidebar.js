@@ -9,7 +9,7 @@ import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from '@themesb
 import { Link } from 'react-router-dom';
 
 import { Routes } from "../routes";
-import ReactHero from "../assets/img/technologies/oku-hero-logo.svg";
+import ReactHero from "../assets/img/technologies/oku-hero-logo-dark.svg";
 import ProfilePicture from "../assets/img/team/profile-picture-3.jpg";
 
 export default (props = {}) => {

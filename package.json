@@ -56,8 +56,10 @@
     "react-scripts": "3.4.3",
     "react-slick": "^0.28.1",
     "react-transition-group": "^4.4.1",
+    "react-tsparticles": "^1.42.1",
     "simplebar-react": "^2.3.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
