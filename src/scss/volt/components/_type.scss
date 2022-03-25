@@ -2,10 +2,25 @@
  * = Typography
  */
 
-h1,h2,h3,h4,h5,h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.home_landing-page h1,
+.home_landing-page h2,
+.home_landing-page h3,
+.home_landing-page h4,
+.home_landing-page h5,
+.home_landing-page h6,
+.home_landing-page .h1,
+.home_landing-page .h2,
+.home_landing-page .h3,
+.home_landing-page .h4,
+.home_landing-page .h5,
+.home_landing-page .h6 {
 	font-family: $font-family-aqum-caps;
 	// font-weight: $headings-font-weight;
+}
+
+h1,h2,h3,h4,h5,h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-weight: $headings-font-weight;
 }
 
 p, ol li, ul li, .p {

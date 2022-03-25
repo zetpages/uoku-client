@@ -2,7 +2,6 @@
 
 Within the download you'll find the following directories and files:
 
-```
 OKU crm for educational center
 .
 ├── LICENSE.md

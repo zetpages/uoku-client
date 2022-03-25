@@ -15,7 +15,7 @@ import Section4 from "../assets/img/section-4.svg";
 import Section5 from "../assets/img/section-5.svg";
 import Section6 from "../assets/img/section-6.svg";
 import ManSvg from "../assets/img/man-svg.svg";
-import ClockSvg from "../assets/img/clock.svg";
+import ClockSvg from "../assets/img/clock.png";
 import PhoneShadow from "../assets/img/custom-phone-shadow.png";
 import TopGradient from "../assets/img/top-gradient.svg";
 import SectionFooter from "../assets/img/section-footer.svg";
@@ -78,7 +78,7 @@ export default () => {
   };
 
   return (
-    <>
+    <div className="home_landing-page">
       {/* <Navbar expand="lg" className="bg_transparent">
         <Container className="position-relative justify-content-between px-3">
           <Navbar.Brand as={HashLink} to="#" className="me-lg-3 d-flex align-items-center">
@@ -108,7 +108,7 @@ export default () => {
             <Image src={ReactHero} />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          <Navbar.Collapse id="responsive-navbar-nav" className="custom_navbar-collapse">
             <Nav className="navbar-nav-hover align-items-lg-center">
               <Nav.Link as={Link} to={Routes.Docs.path}>Докумнтация</Nav.Link>
               <Nav.Link as={Link} to={Routes.Support.path}>Поддержа</Nav.Link>
@@ -361,6 +361,6 @@ export default () => {
           </Row>
         </Container>
       </footer>
-    </>
+    </div>
   );
 };

@@ -1,3 +1,12 @@
+.custom_navbar-collapse {
+    flex-grow: unset !important;
+}
+
+.sidebar-inner .accordion-item,
+.sidebar-inner .accordion-button {
+    background: none;
+}
+
 .just-p,
 .text-order {
     color: $mytext !important;
