@@ -1,16 +1,36 @@
 
-import React from "react";
+import React, {useContext, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faGithub, faGoogle, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { Col, Row, Form, Card, Button, FormCheck, Container, InputGroup } from '@themesberg/react-bootstrap';
-import { Link } from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 import { Routes } from "../../routes";
 import BgImage from "../../assets/img/illustrations/signin.svg";
+import {Context} from "../../index";
+import {login} from "../../http/userAPI";
+import {ADMIN_ROUTE} from "../../data/consts";
+import {safePreventDefault} from "react-slick/lib/utils/innerSliderUtils";
 
 
 export default () => {
+  const {user} = useContext(Context);
+  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const signIn = async () => {
+    try {
+      let data = await login(email, password);
+      user.setUser(user)
+      user.setIsAuth(true)
+      history.push(ADMIN_ROUTE)
+    } catch (e) {
+      alert(e.response.data.message)
+    }
+    safePreventDefault();
+  }
   return (
     <main>
       <section className="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
@@ -33,7 +53,14 @@ export default () => {
                       <InputGroup.Text>
                         <FontAwesomeIcon icon={faEnvelope} />
                       </InputGroup.Text>
-                      <Form.Control autoFocus required type="email" placeholder="akimov@gmail.com" />
+                      <Form.Control
+                          value={email}
+                          onChange={e => setEmail(e.target.value)}
+                          autoFocus
+                          required
+                          type="email"
+                          placeholder="akimov@gmail.com"
+                      />
                     </InputGroup>
                   </Form.Group>
                   <Form.Group>
@@ -43,7 +70,13 @@ export default () => {
                         <InputGroup.Text>
                           <FontAwesomeIcon icon={faUnlockAlt} />
                         </InputGroup.Text>
-                        <Form.Control required type="password" placeholder="secret" />
+                        <Form.Control
+                            required
+                            type="password"
+                            placeholder="Пароль"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                        />
                       </InputGroup>
                     </Form.Group>
                     <div className="d-flex justify-content-between align-items-center mb-4">
@@ -54,7 +87,7 @@ export default () => {
                       <Card.Link className="small text-end">Забыли пароль?</Card.Link>
                     </div>
                   </Form.Group>
-                  <Button variant="primary" type="submit" className="w-100">
+                  <Button variant="primary" type="button" className="w-100" onClick={signIn}>
                     Войти
                   </Button>
                 </Form>

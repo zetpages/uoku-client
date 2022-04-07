@@ -1,6 +1,4 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from "react-router-dom";
 
 // core styles
 import "./scss/volt.scss";
@@ -9,13 +7,18 @@ import "./scss/volt.scss";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "react-datetime/css/react-datetime.css";
 
-import HomePage from "./pages/HomePage";
-import ScrollToTop from "./components/ScrollToTop";
+import UserAuth from "./User/UserAuth";
+import React, {createContext} from 'react';
+import App from "./App";
+
+export const Context = createContext(null);
+// console.log(process.env.REACT_APP_API_URL)
 
 ReactDOM.render(
-  <HashRouter>
-    <ScrollToTop />
-    <HomePage />
-  </HashRouter>,
+    <Context.Provider value={{
+        user: new UserAuth()
+    }}>
+        <App />
+    </Context.Provider>,
   document.getElementById("root")
 );

@@ -4,7 +4,6 @@ import { faBoxOpen, faCartArrowDown, faChartPie, faChevronDown, faClipboard, faC
 import { Col, Row, Button, Dropdown } from '@themesberg/react-bootstrap';
 import { ChoosePhotoWidget, ProfileCardWidget } from "../components/Widgets";
 import { GeneralInfoForm } from "../components/Forms";
-
 import Profile3 from "../assets/img/team/profile-picture-3.jpg";
 
 

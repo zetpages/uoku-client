@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { Routes } from "../routes";
 import ReactHero from "../assets/img/technologies/oku-hero-logo-dark.svg";
 import ProfilePicture from "../assets/img/team/profile-picture-3.jpg";
+import NavItem from "./NavItem";
 
 export default (props = {}) => {
   const location = useLocation();
@@ -40,29 +41,6 @@ export default (props = {}) => {
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
-    );
-  };
-
-  const NavItem = (props) => {
-    const { title, link, external, target, icon, image, badgeText, badgeBg = "secondary", badgeColor = "primary" } = props;
-    const classNames = badgeText ? "d-flex justify-content-start align-items-center justify-content-between" : "";
-    const navItemClassName = link === pathname ? "active" : "";
-    const linkProps = external ? { href: link } : { as: Link, to: link };
-
-    return (
-      <Nav.Item className={navItemClassName} onClick={() => setShow(false)}>
-        <Nav.Link {...linkProps} target={target} className={classNames}>
-          <span>
-            {icon ? <span className="sidebar-icon"><FontAwesomeIcon icon={icon} /> </span> : null}
-            {image ? <Image src={image} width={100} height={40} className="sidebar-icon svg-icon" /> : null}
-
-            <span className="sidebar-text">{title}</span>
-          </span>
-          {badgeText ? (
-            <Badge pill bg={badgeBg} text={badgeColor} className="badge-md notification-count ms-2">{badgeText}</Badge>
-          ) : null}
-        </Nav.Link>
-      </Nav.Item>
     );
   };
 
@@ -96,10 +74,10 @@ export default (props = {}) => {
               </Nav.Link>
             </div>
             <Nav className="flex-column pt-3 pt-md-0">
-              <NavItem title="" link={Routes.Presentation.path} image={ReactHero} />
+              <NavItem className="sidebar-custom_nav-item" title="" link={Routes.Presentation.path} image={ReactHero} />
 
               <NavItem title="Аналитика" link={Routes.DashboardOverview.path} icon={faChartPie} />
-              <NavItem title="Группы" icon={faUsers} link={Routes.Transactions.path} />
+              <NavItem title="Группы" icon={faUsers} link={Routes.Groups.path} />
               <NavItem title="Занятия" icon={faTable} link={Routes.Courses.path} />
               <NavItem title="Профиль" icon={faIdCard} link={Routes.ProfileSettings.path} />
 
@@ -129,6 +107,7 @@ export default (props = {}) => {
 
               <NavItem title="Доступ" icon={faKey} link={Routes.Access.path} />
 
+
               <Dropdown.Divider className="my-3 border-indigo" />
 
               <CollapsableNavItem eventKey="documentation/" title="Документация" icon={faBook}>
@@ -140,24 +119,24 @@ export default (props = {}) => {
               </CollapsableNavItem>
 
 
-              {/* <CollapsableNavItem eventKey="components/" title="Components" icon={faBoxOpen}>
-                <NavItem title="Accordion" link={Routes.Accordions.path} />
-                <NavItem title="Alerts" link={Routes.Alerts.path} />
-                <NavItem title="Badges" link={Routes.Badges.path} />
-                <NavItem title="Breadcrumbs" link={Routes.Breadcrumbs.path} />
-                <NavItem title="Buttons" link={Routes.Buttons.path} />
-                <NavItem title="Forms" link={Routes.Forms.path} />
-                <NavItem title="Modals" link={Routes.Modals.path} />
-                <NavItem title="Navbars" link={Routes.Navbars.path} />
-                <NavItem title="Navs" link={Routes.Navs.path} />
-                <NavItem title="Pagination" link={Routes.Pagination.path} />
-                <NavItem title="Popovers" link={Routes.Popovers.path} />
-                <NavItem title="Progress" link={Routes.Progress.path} />
-                <NavItem title="Tables" link={Routes.Tables.path} />
-                <NavItem title="Tabs" link={Routes.Tabs.path} />
-                <NavItem title="Toasts" link={Routes.Toasts.path} />
-                <NavItem title="Tooltips" link={Routes.Tooltips.path} />
-              </CollapsableNavItem> */}
+              {/*<CollapsableNavItem eventKey="components/" title="Components" icon={faBoxOpen}>*/}
+              {/*  <NavItem title="Accordion" link={Routes.Accordions.path} />*/}
+              {/*  <NavItem title="Alerts" link={Routes.Alerts.path} />*/}
+              {/*  <NavItem title="Badges" link={Routes.Badges.path} />*/}
+              {/*  <NavItem title="Breadcrumbs" link={Routes.Breadcrumbs.path} />*/}
+              {/*  <NavItem title="Buttons" link={Routes.Buttons.path} />*/}
+              {/*  <NavItem title="Forms" link={Routes.Forms.path} />*/}
+              {/*  <NavItem title="Modals" link={Routes.Modals.path} />*/}
+              {/*  <NavItem title="Navbars" link={Routes.Navbars.path} />*/}
+              {/*  <NavItem title="Navs" link={Routes.Navs.path} />*/}
+              {/*  <NavItem title="Pagination" link={Routes.Pagination.path} />*/}
+              {/*  <NavItem title="Popovers" link={Routes.Popovers.path} />*/}
+              {/*  <NavItem title="Progress" link={Routes.Progress.path} />*/}
+              {/*  <NavItem title="Tables" link={Routes.Tables.path} />*/}
+              {/*  <NavItem title="Tabs" link={Routes.Tabs.path} />*/}
+              {/*  <NavItem title="Toasts" link={Routes.Toasts.path} />*/}
+              {/*  <NavItem title="Tooltips" link={Routes.Tooltips.path} />*/}
+              {/*</CollapsableNavItem>*/}
 
               {/* <Button as={Link} to={Routes.Upgrade.path} variant="secondary" className="upgrade-to-pro"><FontAwesomeIcon icon={faCodeBranch} className="me-1" />OkuCRM</Button> */}
             </Nav>

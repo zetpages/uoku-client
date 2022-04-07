@@ -1,16 +1,35 @@
 
-import React from "react";
+import React, {useContext, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faGithub, faGoogle, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { Col, Row, Form, Card, Button, FormCheck, Container, InputGroup } from '@themesberg/react-bootstrap';
-import { Link } from 'react-router-dom';
+import {Link, useHistory, useLocation} from 'react-router-dom';
 
 import { Routes } from "../../routes";
 import BgImage from "../../assets/img/illustrations/signin.svg";
+import {LOGIN_ROUTE} from "../../data/consts";
+import {Context} from "../../index";
+import {registration} from "../../http/userAPI";
 
 
 export default () => {
+  const {user} = useContext(Context);
+  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const signUp = async () => {
+    try {
+      let data = await registration(email, password);
+      user.setUser(user)
+      user.setIsAuth(true)
+      history.push(LOGIN_ROUTE)
+    } catch (e) {
+      alert(e.response.data.message)
+    }
+  }
+
   return (
     <main>
       <section className="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
@@ -33,7 +52,14 @@ export default () => {
                       <InputGroup.Text>
                         <FontAwesomeIcon icon={faEnvelope} />
                       </InputGroup.Text>
-                      <Form.Control autoFocus required type="email" placeholder="akimov@gmail.com" />
+                      <Form.Control
+                          value={email}
+                          onChange={e => setEmail(e.target.value)}
+                          autoFocus
+                          required
+                          type="email"
+                          placeholder="akimov@gmail.com"
+                      />
                     </InputGroup>
                   </Form.Group>
                   <Form.Group id="password" className="mb-4">
@@ -42,7 +68,13 @@ export default () => {
                       <InputGroup.Text>
                         <FontAwesomeIcon icon={faUnlockAlt} />
                       </InputGroup.Text>
-                      <Form.Control required type="password" placeholder="Пароль" />
+                      <Form.Control
+                          required
+                          type="password"
+                          placeholder="Пароль"
+                          value={password}
+                          onChange={e => setPassword(e.target.value)}
+                      />
                     </InputGroup>
                   </Form.Group>
                   <Form.Group id="confirmPassword" className="mb-4">
@@ -61,7 +93,7 @@ export default () => {
                     </FormCheck.Label>
                   </FormCheck>
 
-                  <Button variant="primary" type="submit" className="w-100">
+                  <Button variant="primary" type="submit" className="w-100" onClick={signUp}>
                     Зарегистрироваться
                   </Button>
                 </Form>

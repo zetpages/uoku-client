@@ -3,13 +3,9 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import { Calendar } from '@fullcalendar/core';
-import ruLocale from '@fullcalendar/core/locales/ru'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 
-// let calendar = new Calendar(calendarEl, {
-//   locale: ruLocale
-// });
+
 
 export default class DemoApp extends React.Component {
 
@@ -17,6 +13,7 @@ export default class DemoApp extends React.Component {
     weekendsVisible: true,
     currentEvents: []
   }
+  handleEventClick;
 
 
   render() {
@@ -31,7 +28,7 @@ export default class DemoApp extends React.Component {
               center: 'title',
               right: 'dayGridMonth,timeGridWeek,timeGridDay'
             }}
-            initialView='dayGridMonth'
+            initialView='timeGridWeek'
             editable={true}
             selectable={true}
             selectMirror={true}
@@ -56,14 +53,6 @@ export default class DemoApp extends React.Component {
   renderSidebar() {
     return (
       <div className='demo-app-sidebar'>
-        <div className='demo-app-sidebar-section'>
-          <h2>Instructions</h2>
-          <ul>
-            <li>Select dates and you will be prompted to create a new event</li>
-            <li>Drag, drop, and resize events</li>
-            <li>Click an event to delete it</li>
-          </ul>
-        </div>
         <div className='demo-app-sidebar-section'>
           <label>
             <input

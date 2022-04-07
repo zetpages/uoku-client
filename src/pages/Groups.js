@@ -5,13 +5,13 @@ import { Col, Row, Form, Button, ButtonGroup, Breadcrumb, InputGroup, Dropdown }
 import InnerTopBar from "./components/InnerTopBar";
 import { TransactionsTable } from "../components/Tables";
 
-
 export default () => {
   return (
     <>
-      <InnerTopBar />
 
+        <InnerTopBar />
       <TransactionsTable />
+
     </>
   );
 };

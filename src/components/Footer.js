@@ -25,7 +25,7 @@ export default (props) => {
         <Row className="text-center justify-content-center align-items-center">
           <Col xs={12} lg={6} className="mb-2 mb-lg-0">
             <p className="mb-0 text-center">
-              © OkuCRM {`${currentYear} `}
+              © UOKU CRM {`${currentYear} `}
               <Card.Link href="https://skilland.site" target="_blank" className="text-blue text-decoration-none fw-normal">
                 Skilland
               </Card.Link>
@@ -36,3 +36,5 @@ export default (props) => {
     </div>
   );
 };
+
+

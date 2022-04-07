@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp, faArrowDown, faArrowUp, faEdit, faEllipsisH, faExternalLinkAlt, faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, Pagination, ButtonGroup } from '@themesberg/react-bootstrap';
@@ -10,6 +10,7 @@ import { pageVisits, pageTraffic, pageRanking } from "../data/tables";
 import transactions from "../data/transactions";
 import commands from "../data/commands";
 import teachers from "../data/teachers";
+import axios from "axios";
 
 const ValueChange = ({ value, suffix }) => {
   const valueIcon = value < 0 ? faAngleDown : faAngleUp;
@@ -475,4 +476,164 @@ export const TeachersTable = () => {
       </Card.Body>
     </Card>
   );
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const StudentTable = () => {
+    const totalTransactions = transactions.length;
+
+    const TableRow = (props) => {
+        const { invoiceNumber, subscription, clients, issueDate, level, teacher, scedule, status } = props;
+        const statusVariant = status === "Обучается" ? "success"
+            : status === "Пауза" ? "warning" : status === "Завершили" ? "danger" : "primary";
+
+        const [student, setStudent] = useState([]);
+        useEffect(() => {
+            const getStudent = async ()  => {
+                try {
+                    const res = await  axios.get('http://localhost:5000/api/student');
+                    console.log(res);
+                    const allStudents = res.data;
+                    const exaxtData = res.data[0].role;
+                    console.log(exaxtData)
+                    setStudent(allStudents);
+                } catch (e) {
+                    console.log(e);
+                }
+            };
+            getStudent();
+        }, []);
+
+
+        return (
+            <>
+                {student.map((el)  => (
+                    <tr>
+                        <td>
+                            <Card.Link as={Link} to={Routes.Invoice.path} className="fw-normal">
+                                {el.id}
+                            </Card.Link>
+                        </td>
+                        <td>
+                  <span className="fw-normal">
+                    {el.subscription}
+                  </span>
+                        </td>
+                        <td>
+                  <span className="fw-normal">
+                  </span>
+                        </td>
+                        <td>
+                  <span className="fw-normal">
+                    {el.name}
+                  </span>
+                        </td>
+                        <td>
+                  <span className={`fw-normal text-${statusVariant}`}>
+                    {el.status}
+                  </span>
+                        </td>
+                        <td>
+                  <span className="fw-normal">
+                    {el.password}
+                  </span>
+                        </td>
+                        <td>
+          <span className="fw-normal">
+            {el.role}
+          </span>
+                        </td>
+                        <td>
+          <span className="fw-normal">
+            {el.phone}
+          </span>
+                        </td>
+                        <td>
+          <span className="fw-normal">
+            {el.email}
+          </span>
+                        </td>
+                        <td>
+                            <Dropdown as={ButtonGroup}>
+                                <Dropdown.Toggle as={Button} split variant="link" className="text-dark m-0 p-0">
+              <span className="icon icon-sm">
+                <FontAwesomeIcon icon={faEllipsisH} className="icon-dark" />
+              </span>
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item>
+                                        <FontAwesomeIcon icon={faEye} className="me-2" /> Детали
+                                    </Dropdown.Item>
+                                    <Dropdown.Item>
+                                        <FontAwesomeIcon icon={faEdit} className="me-2" /> Изменить
+                                    </Dropdown.Item>
+                                    <Dropdown.Item className="text-danger">
+                                        <FontAwesomeIcon icon={faTrashAlt} className="me-2" /> Удалить
+                                    </Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </td>
+                    </tr>
+                ))}
+            </>
+        );
+    };
+
+    return (
+        <Card border="light" className="table-wrapper table-responsive shadow-sm">
+            <Card.Body className="pt-0">
+                <Table hover className="user-table align-items-center">
+                    <thead>
+                    <tr>
+                        <th className="border-bottom">ID</th>
+                        <th className="border-bottom">Название</th>
+                        <th className="border-bottom">Начало Обучения</th>
+                        <th className="border-bottom">Статус</th>
+                        <th className="border-bottom">Клиенты</th>
+                        <th className="border-bottom">Уровень</th>
+                        <th className="border-bottom">Отв.Педагог</th>
+                        <th className="border-bottom">Расписание</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {/*{transactions.map(t => <TableRow key={`transaction-${t.invoiceNumber}`} {...t} />)}*/}
+                    <TableRow />
+                    </tbody>
+                </Table>
+                <Card.Footer className="px-3 border-0 d-lg-flex align-items-center justify-content-between">
+                    <Nav>
+                        <Pagination className="mb-2 mb-lg-0">
+                            <Pagination.Prev>
+                                Назад
+                            </Pagination.Prev>
+                            <Pagination.Item active>1</Pagination.Item>
+                            <Pagination.Item>2</Pagination.Item>
+                            <Pagination.Item>3</Pagination.Item>
+                            <Pagination.Item>4</Pagination.Item>
+                            <Pagination.Item>5</Pagination.Item>
+                            <Pagination.Next>
+                                Вперед
+                            </Pagination.Next>
+                        </Pagination>
+                    </Nav>
+                    <small className="fw-bold">
+                        Показано <b>{totalTransactions}</b> из <b>25</b> строк
+                    </small>
+                </Card.Footer>
+            </Card.Body>
+        </Card>
+    );
 };

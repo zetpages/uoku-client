@@ -6,6 +6,7 @@ import { Col, Row, Card, Image, Button, Container, NavItem, ListGroup, Tooltip, 
 import { Link, NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Routes } from "../routes";
+import moment from "moment-timezone";
 import MockupPresentation from "../assets/img/mockup-presentation.png";
 import ReactHero from "../assets/img/technologies/oku-hero-logo.svg";
 import ReactHeroDark from "../assets/img/technologies/oku-hero-logo-dark.svg";
@@ -23,6 +24,7 @@ import OkLogo from "../assets/img/technologies/ok-logo-dark.svg";
 
 
 export default () => {
+  const currentYear = moment().get("year");
   const PagePreview = (props) => {
     const { name, image, link } = props;
 
@@ -120,6 +122,7 @@ export default () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
 
 
 
@@ -355,7 +358,7 @@ export default () => {
           <Row>
             <Col className="mb-md-2">
               <div className="d-flex text-center justify-content-center align-items-center" role="contentinfo">
-                <p className="font-weight-normal font-small mb-0">© Skilland <span className="current-year">2021</span>. Все права защищены.</p>
+                <p className="font-weight-normal font-small mb-0">© Skilland <span className="current-year">{`${currentYear}`}</span>. Все права защищены.</p>
               </div>
             </Col>
           </Row>

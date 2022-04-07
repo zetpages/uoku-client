@@ -1,25 +1,60 @@
 
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faCog, faEnvelopeOpen, faQuestion, faSearch, faSignOutAlt, faCashRegister, faChartLine, faCloudUploadAlt, faPlus, faRocket, faTasks, faUserShield, faShoppingCart, faUserAstronaut, faGraduationCap, faUserGraduate, faUserFriends, faUsers, faTable, faInbox, faPlusCircle, faMinusCircle, faHashtag, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBell,
+  faCog,
+  faEnvelopeOpen,
+  faQuestion,
+  faSearch,
+  faSignOutAlt,
+  faCashRegister,
+  faChartLine,
+  faCloudUploadAlt,
+  faPlus,
+  faRocket,
+  faTasks,
+  faUserShield,
+  faShoppingCart,
+  faUserAstronaut,
+  faGraduationCap,
+  faUserGraduate,
+  faUserFriends,
+  faUsers,
+  faTable,
+  faInbox,
+  faPlusCircle,
+  faMinusCircle,
+  faHashtag,
+  faUser,
+  faIdCard
+} from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { Row, Col, Nav, Form, Image, Navbar, Dropdown, Container, ListGroup, InputGroup, Button, ButtonGroup, Badge } from '@themesberg/react-bootstrap';
-import { Link } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
+import {Link, useHistory, useLocation} from 'react-router-dom';
 import NOTIFICATIONS_DATA from "../data/notifications";
 import Profile3 from "../assets/img/team/profile-picture-3.jpg";
 
 import { Routes } from "../routes";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+import NavItem from "./NavItem";
+import {Context} from "../index";
+import {MAIN_ROUTE} from "../data/consts";
 
 
 export default (props) => {
-  const location = useLocation();
-  const { pathname } = location;
-  const [show, setShow] = useState(false);
-  const showClass = show ? "show" : "";
 
-  const onCollapse = () => setShow(!show);
+  const {user}  = useContext(Context);
+  const history = useHistory();
+
+
+  const logOut = () => {
+    user.setUser({});
+    user.setIsAuth(false);
+    history.push(MAIN_ROUTE)
+  }
+
+
   const [notifications, setNotifications] = useState(NOTIFICATIONS_DATA);
   const areNotificationsRead = notifications.reduce((acc, notif) => acc && notif.read, true);
 
@@ -27,29 +62,6 @@ export default (props) => {
     setTimeout(() => {
       setNotifications(notifications.map(n => ({ ...n, read: true })));
     }, 300);
-  };
-
-  const NavItem = (props) => {
-    const { title, link, external, target, icon, image, badgeText, badgeBg = "secondary", badgeColor = "primary" } = props;
-    const classNames = badgeText ? "d-flex justify-content-start align-items-center justify-content-between" : "";
-    const navItemClassName = link === pathname ? "active" : "";
-    const linkProps = external ? { href: link } : { as: Link, to: link };
-
-    return (
-      <Nav.Item className={navItemClassName} onClick={() => setShow(false)}>
-        <Nav.Link {...linkProps} target={target} className={classNames}>
-          <span>
-            {icon ? <span className="sidebar-icon"><FontAwesomeIcon icon={icon} /> </span> : null}
-            {image ? <Image src={image} width={100} height={40} className="sidebar-icon svg-icon" /> : null}
-
-            <span className="sidebar-text">{title}</span>
-          </span>
-          {badgeText ? (
-            <Badge pill bg={badgeBg} text={badgeColor} className="badge-md notification-count ms-2">{badgeText}</Badge>
-          ) : null}
-        </Nav.Link>
-      </Nav.Item>
-    );
   };
 
   const Notification = (props) => {
@@ -180,7 +192,7 @@ export default (props) => {
 
               <Dropdown.Menu className="user-dropdown dropdown-menu-right mt-2">
                 <Dropdown.Item className="fw-bold">
-                  <FontAwesomeIcon icon={faUserCircle} className="me-2" /> Профиль
+                    <FontAwesomeIcon icon={faUserCircle} className="me-2" /> Профиль
                 </Dropdown.Item>
                 <Dropdown.Item className="fw-bold">
                   <FontAwesomeIcon icon={faQuestion} className="me-2" /> Вопросы
@@ -194,10 +206,11 @@ export default (props) => {
 
                 <Dropdown.Divider />
 
-                <Dropdown.Item className="fw-bold">
-                  <FontAwesomeIcon icon={faSignOutAlt} className="text-danger me-2" /> Выйти
+                <Dropdown.Item className="fw-bold" onClick={() => logOut()}>
+                    <FontAwesomeIcon icon={faSignOutAlt} className="text-danger me-2"/> Выйти
                 </Dropdown.Item>
               </Dropdown.Menu>
+
             </Dropdown>
           </Nav>
         </div>
