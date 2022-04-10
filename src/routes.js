@@ -26,7 +26,7 @@ import Contacts from "./pages/Contacts";
 
 // user pages
 import Teachers from "./pages/users/Teachers";
-import Pupils from "./pages/users/Students";
+import Students from "./pages/users/Students";
 import Parents from "./pages/users/Parents";
 import Legals from "./pages/users/Legals";
 import Leads from "./pages/users/Leads";
@@ -67,7 +67,7 @@ export const Routes = {
 
     // users
     Teachers: { path: "/users/teachers" },
-    Pupils: { path: "/users/students" },
+    Students: { path: "/users/students" },
     Parents: { path: "/users/parents" },
     Legals: { path: "/users/legals" },
     Leads: { path: "/users/leads" },
@@ -168,7 +168,7 @@ export const authRoutes = [
     },
     {
         path: "/users/students",
-        Component: Pupils
+        Component: Students
     },
     {
         path: "/users/parents",

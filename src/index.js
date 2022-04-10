@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import "react-datetime/css/react-datetime.css";
 
 import UserAuth from "./User/UserAuth";
+import AdminBoard from "./User/AdminBoard";
 import React, {createContext} from 'react';
 import App from "./App";
 
@@ -16,7 +17,8 @@ export const Context = createContext(null);
 
 ReactDOM.render(
     <Context.Provider value={{
-        user: new UserAuth()
+        user: new UserAuth(),
+        board: new AdminBoard()
     }}>
         <App />
     </Context.Provider>,

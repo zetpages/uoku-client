@@ -56,6 +56,25 @@
     }
 }
 
+.modal-body .dropdown-toggle {
+    background: transparent !important;
+    color: #233044 !important;
+    border: 1px solid #233044 !important;
+
+    &::after {
+        box-sizing: border-box;
+        display: inline-block;
+        margin-left: 0.255em;
+        vertical-align: 0.155em;
+        content: "";
+        border-top: 0.3em solid;
+        border-right: 0.3em solid transparent;
+        border-bottom: 0;
+        border-left: 0.3em solid transparent;
+    }
+}
+
+
 // Dropown sizes
 .dropdown-menu-sm {
     min-width: 100px;

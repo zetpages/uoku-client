@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Preloader from "../components/Preloader";
 import {Context} from "../index";
+import {fetchStudent, fetchSubscription} from "../http/boardAPI";
 
 
 const RouteWithLoader = ({ component: Component, ...rest }) => {
@@ -50,14 +51,16 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
     );
 };
 
-// const {user} = useContext(Context);
-//
-// console.log(user);
-
 export default function HomePage() {
     const {user} = useContext(Context);
+    const {board} = useContext(Context);
 
-    console.log(user);
+    useEffect(() => {
+        fetchStudent().then(data => board.setStudents(data));
+    },[]);
+
+    console.log(user.isAuth)
+
     return (
         <Switch>
             {publicRoutes.map(({path, Component}) =>
@@ -70,6 +73,3 @@ export default function HomePage() {
         </Switch>
     );
 }
-
-// export default HomePage;
-

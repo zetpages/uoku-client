@@ -99,7 +99,7 @@ export default (props = {}) => {
               {/* <NavItem external title="Plugins" link="https://demo.themesberg.com/volt-pro-react/#/plugins/datatable" target="_blank" badgeText="Pro" icon={faChartPie} /> */}
               <CollapsableNavItem eventKey="users/" title="Пользователи" icon={faUserPlus}>
                 <NavItem title="Педагоги" icon={faUserTie} link={Routes.Teachers.path} />
-                <NavItem title="Ученики" icon={faUserGraduate} link={Routes.Pupils.path} />
+                <NavItem title="Ученики" icon={faUserGraduate} link={Routes.Students.path} />
                 <NavItem title="Родители" icon={faUserFriends} link={Routes.Parents.path} />
                 {/* <NavItem title="Юр. лица" icon={faSuitcase} link={Routes.Legals.path} /> */}
                 <NavItem title="Лиды" icon={faUserAstronaut} link={Routes.Leads.path} />

@@ -7,7 +7,6 @@ import {useLocation} from "react-router-dom";
 const InnerTopBar = () => {
 
     const location = useLocation();
-    console.log(location.pathname.split("/").pop());
     const activePath = location.pathname.split("/").pop();
 
     let temp = '';
@@ -76,9 +75,9 @@ const InnerTopBar = () => {
                     <Col xs={4} md={2} xl={1} className="ps-md-0 text-end">
                         <Dropdown as={ButtonGroup}>
                             <Dropdown.Toggle split as={Button} variant="link" className="text-dark m-0 p-0">
-                <span className="icon icon-sm icon-gray">
-                  <FontAwesomeIcon icon={faCog} />
-                </span>
+                                <span className="icon icon-sm icon-gray">
+                                  <FontAwesomeIcon icon={faCog} />
+                                </span>
                             </Dropdown.Toggle>
                             <Dropdown.Menu className="dropdown-menu-xs dropdown-menu-right">
                                 <Dropdown.Item className="fw-bold text-dark">Show</Dropdown.Item>

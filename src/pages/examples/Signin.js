@@ -11,7 +11,6 @@ import BgImage from "../../assets/img/illustrations/signin.svg";
 import {Context} from "../../index";
 import {login} from "../../http/userAPI";
 import {ADMIN_ROUTE} from "../../data/consts";
-import {safePreventDefault} from "react-slick/lib/utils/innerSliderUtils";
 
 
 export default () => {
@@ -29,7 +28,6 @@ export default () => {
     } catch (e) {
       alert(e.response.data.message)
     }
-    safePreventDefault();
   }
   return (
     <main>
