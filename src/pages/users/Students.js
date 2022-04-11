@@ -19,7 +19,7 @@ const Students = observer(() => {
         // console.log(el.groups[0].regular_classes[0].course.name);
         // console.log(el.groups[0].regular_classes[0].level.name);
         // console.log(el.groups[0].regular_classes[0].room.name);
-        console.log(el)
+        // console.log(el.createdAt)
     })
 
     // board.students.map((el) => {
@@ -54,7 +54,7 @@ const Students = observer(() => {
                           </span>
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item>
+                            <Dropdown.Item as={Link} to={Routes.Students.path + '/' + student.id}>
                                 <FontAwesomeIcon icon={faEye} className="me-2" /> Детали
                             </Dropdown.Item>
                             <Dropdown.Item>
@@ -147,6 +147,16 @@ const Students = observer(() => {
 
                 <td>
                     {student.groups.map((t) =>
+                        t.regular_classes.map((k) =>
+                            <span className="fw-normal"key={k.level.id}>
+                                {k.level.name}
+                            </span>
+                        )
+                    )}
+                </td>
+
+                <td>
+                    {student.groups.map((t) =>
                         <span className="fw-normal" key={t.id}>
                             {t.branch.name}
                         </span>
@@ -164,20 +174,17 @@ const Students = observer(() => {
                 </td>
 
                 <td>
-                    {student.groups.map((t) =>
-                        t.regular_classes.map((k) =>
-                            <span className="fw-normal"key={k.level.id}>
-                                {k.level.name}
-                            </span>
-                        )
-                    )}
-                </td>
-                <td>
                   <span className="fw-normal">
                     {student.discount}%
                   </span>
                 </td>
+                <td>
+                    <span className="fw-normal">
+                        {student.createdAt.substring(0, 10)}
+                    </span>
+                </td>
             </tr>
+
         );
     };
 
@@ -208,10 +215,11 @@ const Students = observer(() => {
                             <th className="border-bottom">Контакты</th>
                             <th className="border-bottom">Отв.Педагог</th>
                             <th className="border-bottom">Курсы</th>
+                            <th className="border-bottom">Уровень</th>
                             <th className="border-bottom">Филиал</th>
                             <th className="border-bottom">Аудитории</th>
-                            <th className="border-bottom">Уровень</th>
                             <th className="border-bottom">Cкидка</th>
+                            <th className="border-bottom">Добавлен</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -30,6 +30,7 @@ import Students from "./pages/users/Students";
 import Parents from "./pages/users/Parents";
 import Legals from "./pages/users/Legals";
 import Leads from "./pages/users/Leads";
+import SingleStudent from "./pages/SingleStudent";
 
 import DocsOverview from "./pages/documentation/DocsOverview";
 import DocsDownload from "./pages/documentation/DocsDownload";
@@ -68,6 +69,7 @@ export const Routes = {
     // users
     Teachers: { path: "/users/teachers" },
     Students: { path: "/users/students" },
+    SingleStudent: { path: "/users/students/:id" },
     Parents: { path: "/users/parents" },
     Legals: { path: "/users/legals" },
     Leads: { path: "/users/leads" },
@@ -169,6 +171,10 @@ export const authRoutes = [
     {
         path: "/users/students",
         Component: Students
+    },
+    {
+        path: "/users/students/:id",
+        Component: SingleStudent
     },
     {
         path: "/users/parents",

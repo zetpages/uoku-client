@@ -17,6 +17,16 @@ export const fetchStudent = async () => {
     return data;
 }
 
+export const fetchOneStudent = async (id) => {
+    const {data} = await $host.get('api/student/' + id)
+    return data;
+}
+
+export const deleteStudent = async (id) => {
+    const {data} = await $authHost.delete(`api/student/${id}`);
+    return data;
+}
+
 export const createTeacher = async (teacher) => {
     const {data} = await $authHost.post('api/teacher/', teacher);
     return data;

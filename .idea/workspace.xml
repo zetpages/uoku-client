@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2ce6789-8e07-46d4-b421-280aad066c8f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/User/AdminBoard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/SingleStudent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modals/StudentModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modals/StudentModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tables.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/http/studentAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/boardAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Courses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/InnerTopBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/InnerTopBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/examples/Signin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/examples/Signin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/users/Parents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/users/Parents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/UserAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UserAuth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/http/boardAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/boardAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/users/Students.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/users/Students.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/volt/components/_dropdown.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/volt/components/_dropdown.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/volt/layout/_custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/volt/layout/_custom.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +40,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/http" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -76,7 +65,8 @@
       <workItem from="1649016054557" duration="5086000" />
       <workItem from="1649231161602" duration="28540000" />
       <workItem from="1649274177039" duration="49365000" />
-      <workItem from="1649443184969" duration="50318000" />
+      <workItem from="1649443184969" duration="60220000" />
+      <workItem from="1649660319833" duration="24000" />
     </task>
     <servers />
   </component>
