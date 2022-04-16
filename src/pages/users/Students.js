@@ -1,13 +1,14 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, lazy, Suspense} from "react";
 import InnerTopBar from "../components/InnerTopBar";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
-import {Button, ButtonGroup, Card, Dropdown, Image, Nav, Pagination, Table} from "react-bootstrap";
+import {Button, ButtonGroup, Card, Dropdown, Image, Nav, Pagination, Spinner, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {Routes} from "../../routes";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEdit, faEllipsisH, faEye, faTrashAlt, faU} from "@fortawesome/free-solid-svg-icons";
+import {faEdit, faEllipsisH, faEye, faTrashAlt, faU, faEnvelope, faPhone} from "@fortawesome/free-solid-svg-icons";
 import StudentModal from "../../components/Modals/StudentModal";
+// import util from "util";
 import groups from "../Groups";
 
 const Students = observer(() => {
@@ -19,7 +20,10 @@ const Students = observer(() => {
         // console.log(el.groups[0].regular_classes[0].course.name);
         // console.log(el.groups[0].regular_classes[0].level.name);
         // console.log(el.groups[0].regular_classes[0].room.name);
-        // console.log(el.createdAt)
+        console.log(el)
+        // console.dir(el, { depth: null });
+        // console.log(util.inspect(el, {showHidden: false, depth: null, colors: true}))
+        // console.log(JSON.stringify(el, null, '\t'));
     })
 
     // board.students.map((el) => {
@@ -115,16 +119,21 @@ const Students = observer(() => {
                 </td>
                 <td>
                     <span className="fw-normal">
+                        {student.birthday.substring(4, 15)}
+                    </span>
+                </td>
+                <td>
+                    <span className="fw-normal">
                         {student.subscription.name}
                     </span>
                 </td>
                 <td>
                   <span className="fw-normal">
-                    {student.phone}
+                    <FontAwesomeIcon icon={faPhone} className="me-2" />{student.phone}
                   </span>
                     <br/>
                     <span className="fw-normal">
-                    {student.email}
+                    <FontAwesomeIcon icon={faEnvelope} className="me-2" />{student.email}
                   </span>
                 </td>
                 <td>
@@ -134,11 +143,16 @@ const Students = observer(() => {
                         ) : <span className="fw-normal">Set teacher</span>
                     }
                 </td>
+                <td>
+                    <span className="fw-normal">
+                        {student.admin.name}
+                    </span>
+                </td>
 
                 <td>
                     {student.groups.map((t) =>
-                        t.regular_classes.map((k) =>
-                            <span className="fw-normal" key={k.course.id}>
+                        t.regular_classes.map((k, i) =>
+                            <span className="fw-normal" key={i}>
                                 {k.course.name}
                             </span>
                         )
@@ -146,12 +160,10 @@ const Students = observer(() => {
                 </td>
 
                 <td>
-                    {student.groups.map((t) =>
-                        t.regular_classes.map((k) =>
-                            <span className="fw-normal"key={k.level.id}>
-                                {k.level.name}
-                            </span>
-                        )
+                    {student.groups.map((t, i) =>
+                        <span className="fw-normal" key={i}>
+                            {t.level.name}
+                        </span>
                     )}
                 </td>
 
@@ -165,17 +177,21 @@ const Students = observer(() => {
 
                 <td>
                     {student.groups.map((t) =>
-                        t.regular_classes.map((k) =>
-                            <span className="fw-normal" key={k.room.id}>
+                        t.regular_classes.map((k,i) =>
+                            <span className="fw-normal" key={i}>
                                 {k.room.name}
                             </span>
                         )
                     )}
                 </td>
-
+                <td>
+                    <span className="fw-normal">
+                        {student.balance}
+                    </span>
+                </td>
                 <td>
                   <span className="fw-normal">
-                    {student.discount}%
+                    {student.discount.amount}%
                   </span>
                 </td>
                 <td>
@@ -211,18 +227,24 @@ const Students = observer(() => {
                             <th className="border-bottom">Расписание</th>
                             <th className="border-bottom">Статус</th>
                             <th className="border-bottom">Пол</th>
+                            <th className="border-bottom">Год. рож</th>
                             <th className="border-bottom">Абонемент</th>
                             <th className="border-bottom">Контакты</th>
                             <th className="border-bottom">Отв.Педагог</th>
+                            <th className="border-bottom">Менеджер</th>
                             <th className="border-bottom">Курсы</th>
                             <th className="border-bottom">Уровень</th>
                             <th className="border-bottom">Филиал</th>
                             <th className="border-bottom">Аудитории</th>
+                            <th className="border-bottom">Баланс</th>
                             <th className="border-bottom">Cкидка</th>
                             <th className="border-bottom">Добавлен</th>
                         </tr>
                         </thead>
                         <tbody>
+                        {/*<Suspense fallback={<Spinner animation="grow" variant="info" />}>*/}
+                        {/*    {board.students.map((t, i) => <StudentRow key={i} {...t} />)}*/}
+                        {/*</Suspense>*/}
                         {board.students.map((t, i) => <StudentRow key={i} {...t} />)}
                         </tbody>
                     </Table>

@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2ce6789-8e07-46d4-b421-280aad066c8f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/SingleStudent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/UserAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UserAuth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CalendarCom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CalendarCom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modals/StudentModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modals/StudentModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/http/boardAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/boardAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/SingleStudent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SingleStudent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/users/Students.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/users/Students.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/volt/layout/_custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/volt/layout/_custom.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +67,9 @@
       <workItem from="1649231161602" duration="28540000" />
       <workItem from="1649274177039" duration="49365000" />
       <workItem from="1649443184969" duration="60220000" />
-      <workItem from="1649660319833" duration="24000" />
+      <workItem from="1649660243597" duration="17028000" />
+      <workItem from="1649752535187" duration="23217000" />
+      <workItem from="1649939866487" duration="30852000" />
     </task>
     <servers />
   </component>

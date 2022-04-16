@@ -311,3 +311,102 @@ h2 {
 .ml__5px {
     margin-left: 5px;
 }
+
+.custom__prop-line {
+    border-bottom: .5px dashed lightgray;
+}
+
+.back-red {
+    background: #F4F9F9;
+}
+.back-green {
+    background: #CFFFFE;
+}
+.back-blue {
+    background: #F6F6F6;
+}
+
+.regular__class {
+
+    p {
+        margin-bottom: 0 !important;
+        font-size: 12px;
+        color: #2e3650;
+
+        svg {
+            font-size: 10px !important;
+
+            path {
+                fill: #4a5073c9 !important;
+            }
+        }
+    }
+}
+
+.font__s-6 {
+    font-size: 12px;
+}
+
+.bg-done {
+    background-color: #e0fbfc !important;
+}
+
+.attendance {
+    .tabs__parent {
+        .tab-content > .active {
+            display: flex !important;
+            flex-wrap: wrap !important;
+        }
+
+        .nav {
+            width: 100%;
+
+            .nav-item {
+                flex: 1;
+
+                .nav-link {
+                    width: 100%;
+                    text-align: center;
+                    padding: 0.1rem 1rem;
+                    border-radius: 0 !important;
+                    border: .5px solid #2e3650;
+
+                }
+                .nav-link.active {
+                    background-color: #2e3650;
+                    border: .5px solid #2e3650;
+                }
+            }
+        }
+
+        .tabs__child {
+            .nav {
+                width: 100%;
+                margin-bottom: .5rem !important;
+
+                .nav-item {
+                    flex: 1;
+
+                    .nav-link {
+                        width: 100% !important;
+                        text-align: center;
+                        padding: 0.1rem 1rem !important;
+                        border-radius: 0 !important;
+                        border: .5px solid #ee6c4d;
+                        color: #ee6c4d !important;
+
+                    }
+                    .nav-link.active {
+                        background-color: #ee6c4d;
+                        border: .5px solid #ee6c4d;
+                        color: #fff !important;
+                    }
+                }
+            }
+        }
+    }
+}
+.text__orange {
+    color: #ee6c4d !important;
+}
+

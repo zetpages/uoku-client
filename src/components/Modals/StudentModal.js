@@ -1,5 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Button, Dropdown, Form, Row, Col, Modal} from "react-bootstrap";
+import Datetime from "react-datetime";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import {Context} from "../../index";
 import {
     createStudent,
@@ -10,6 +13,8 @@ import {
     fetchStStatus, fetchGender, fetchAdmin
 } from "../../http/boardAPI";
 import {observer} from "mobx-react-lite";
+import {InputGroup} from "@themesberg/react-bootstrap";
+import moment from "moment-timezone";
 
 const StudentModal = observer(({show, onHide}) => {
     const {board} = useContext(Context);
@@ -21,6 +26,8 @@ const StudentModal = observer(({show, onHide}) => {
     const [file, setFile] = useState(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [birthday, setBirthday] = useState("");
+    const [balance, setBalance] = useState(0);
 
     // console.log(board.gender)
 
@@ -50,6 +57,8 @@ const StudentModal = observer(({show, onHide}) => {
         formData.append('phone', phone);
         formData.append('parentPhone', parentPhone);
         formData.append('img', file);
+        formData.append('birthday', birthday);
+        formData.append('balance', balance);
         formData.append('groupId', board.selectedGroup.id);
         formData.append('adminId', board.selectedAdmin.id);
         formData.append('teacherId', board.selectedTeacher.id);
@@ -161,6 +170,22 @@ const StudentModal = observer(({show, onHide}) => {
                         </Dropdown>
                     </Row>
 
+                    <Datetime
+                        timeFormat={false}
+                        onChange={setBirthday}
+                        renderInput={(props, openCalendar) => (
+                            <InputGroup>
+                                <InputGroup.Text><FontAwesomeIcon icon={faCalendarAlt} /></InputGroup.Text>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    value={birthday ? moment(birthday).format("DD.MM.YYYY") : ""}
+                                    placeholder="dd.mm.yyyy"
+                                    onFocus={openCalendar}
+                                    onChange={e => setBirthday(e.target.value)} />
+                            </InputGroup>
+                        )} />
+
                     <Form.Control
                         value={name}
                         onChange={e => setName(e.target.value)}
@@ -206,6 +231,13 @@ const StudentModal = observer(({show, onHide}) => {
                         className="mt-3"
                         placeholder="Enter parent phone"
                         type="text"
+                    />
+                    <Form.Control
+                        value={balance}
+                        onChange={e => setBalance(Number(e.target.value))}
+                        className="mt-3"
+                        placeholder="balance"
+                        type="number"
                     />
                     <Form.Control
                         className="mt-3"

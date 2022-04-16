@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
+import ruLocale from '@fullcalendar/core/locales/ru';
 
 
 
@@ -29,6 +30,7 @@ export default class DemoApp extends React.Component {
               right: 'dayGridMonth,timeGridWeek,timeGridDay'
             }}
             initialView='timeGridWeek'
+            locale={ruLocale}
             editable={true}
             selectable={true}
             selectMirror={true}

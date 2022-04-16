@@ -18,7 +18,7 @@ export const fetchStudent = async () => {
 }
 
 export const fetchOneStudent = async (id) => {
-    const {data} = await $host.get('api/student/' + id)
+    const {data} = await $authHost.get('api/student/' + id)
     return data;
 }
 
