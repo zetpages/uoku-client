@@ -351,6 +351,10 @@ h2 {
     background-color: #e0fbfc !important;
 }
 
+.bg-none {
+    background: none !important;
+}
+
 .attendance {
     .tabs__parent {
         .tab-content > .active {
@@ -370,11 +374,15 @@ h2 {
                     padding: 0.1rem 1rem;
                     border-radius: 0 !important;
                     border: .5px solid #2e3650;
+                    border-right: none !important;
+                    border-left: none !important;
+                    text-decoration: underline !important;
 
                 }
                 .nav-link.active {
                     background-color: #2e3650;
                     border: .5px solid #2e3650;
+                    text-decoration: none !important;
                 }
             }
         }
@@ -410,3 +418,6 @@ h2 {
     color: #ee6c4d !important;
 }
 
+.no__padding {
+    padding: 0 !important;
+}

@@ -1,7 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {fetchOneStudent} from "../http/boardAPI";
-import {Button, ButtonGroup, Col, Dropdown, Image, Row, Tab, Tabs} from "react-bootstrap";
+import {
+    Button,
+    ButtonGroup,
+    Col,
+    Dropdown,
+    Image,
+    Overlay,
+    OverlayTrigger,
+    Popover,
+    Row,
+    Tab,
+    Tabs
+} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faBookmark,
@@ -13,7 +25,7 @@ import {
     faCommentDots,
     faEllipsisVertical,
     faFileAlt,
-    faGraduationCap,
+    faGraduationCap, faGrip,
     faIdCard,
     faLocationDot,
     faPencil,
@@ -33,13 +45,15 @@ const SingleStudent = () => {
     const {id} = useParams();
 
 
-
     useEffect(() => {
         fetchOneStudent(id).then(data => setStudent(data));
     },[]);
 
+
+
     const studentWidget = student.groups?.map((el) => {
         let tmpArray;
+        console.log(el)
         el.regular_classes?.map((k) => {
             const sortedSingleClasses = k.single_classes.sort((a, b) => {
                 return Date.parse(a.dayDate) - Date.parse(b.dayDate);
@@ -49,19 +63,7 @@ const SingleStudent = () => {
         return tmpArray;
     })
 
-    // function sortSingleClass(el) {
-    //     return el.sort((a, b) => {
-    //         return Date.parse(a.dayDate) - Date.parse(b.dayDate);
-    //     });
-    // }
-
-    // const activities = [
-    //     { id: 22, classState: 'запланирован', day: 'Mon', dayDate: '2022-09-12', createdAt: '2022-04-15T21:57:27.392Z' },
-    //     { id: 21, classState: 'запланирован', day: 'Mon', dayDate: '2022-09-05', createdAt: '2022-04-15T21:57:27.392Z' },
-    //     { id: 23, classState: 'запланирован', day: 'Fri', dayDate: '2022-04-15', createdAt: '2022-04-15T21:57:27.394Z' },
-    //     { id: 24, classState: 'запланирован', day: 'Fri', dayDate: '2022-04-22', createdAt: '2022-04-15T21:57:27.394Z' }
-    // ]
-    // console.log(sortSingleClass(activities))
+    // console.log(student.groups[0]?.regular_classes[0]?.single_classes)
 
 
     const statusName = student.studentStatusId === 1 ? "Обучается"
@@ -69,6 +71,7 @@ const SingleStudent = () => {
     const statusVariant = statusName === "Обучается" ? "success"
         : statusName === "Пауза" ? "warning" : statusName === "Завершили" ? "danger" : "primary";
     const bgColor = ['red', 'green','blue'];
+
 
     return (
         <>
@@ -96,7 +99,7 @@ const SingleStudent = () => {
                                             <Dropdown.Divider />
 
                                             <Dropdown.Item>
-                                                <FontAwesomeIcon icon={faRocket} className="text-danger me-2" /> Subscription Plan
+                                                <FontAwesomeIcon icon={faRocket} className="text-danger me-2" /> Абонемент
                                             </Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>
@@ -116,82 +119,23 @@ const SingleStudent = () => {
                                             <h6>{student.email}</h6>
                                         </div>
                                         <div className="d-flex justify-content-between custom__prop-line mt-2">
-                                            <span className="text-nowrap">Gender</span>
+                                            <span className="text-nowrap">Пол</span>
                                             <h6>{student.gender?.name}</h6>
                                         </div>
                                         <div className="d-flex justify-content-between custom__prop-line mt-2">
-                                            <span className="text-nowrap">Phone</span>
+                                            <span className="text-nowrap">Телефон</span>
                                             <h6>{student.phone}</h6>
                                         </div>
                                         <div className="d-flex justify-content-between custom__prop-line mt-2">
-                                            <span className="text-nowrap">Parent</span>
+                                            <span className="text-nowrap">Родители</span>
                                             <h6>{student.parentName}, {student.parentPhone}</h6>
                                         </div>
                                         <div className="d-flex justify-content-between custom__prop-line mt-2">
-                                            <span className="text-nowrap">Res manager</span>
+                                            <span className="text-nowrap">Отв. менеджер</span>
                                             <h6>{student.admin?.name}</h6>
                                         </div>
                                     </div>
 
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-                    <Row className="mt-2">
-                        <Col>
-                            <Card>
-                                <Card.Body className="p-2 pb-4">
-                                    <div className="d-flex justify-content-between align-items-center mb-4 mt-3 me-2">
-                                        <h5 className="m-0">
-                                            <FontAwesomeIcon icon={faIdCard} className="text-danger mx-2" />
-                                            Абонементы
-                                        </h5>
-                                        <Dropdown as={ButtonGroup}>
-                                            <Dropdown.Toggle split as={Button} variant="link" className="text-dark p-0">
-                                                <FontAwesomeIcon icon={faPlus} />
-                                            </Dropdown.Toggle>
-                                            <Dropdown.Menu className="dashboard-dropdown dropdown-menu-left mt-2">
-                                                <Dropdown.Item>
-                                                    <FontAwesomeIcon icon={faFileAlt} className="me-2" /> Edit
-                                                </Dropdown.Item>
-                                                <Dropdown.Item>
-                                                    <FontAwesomeIcon icon={faBoxOpen} className="me-2" /> Update
-                                                </Dropdown.Item>
-
-                                                <Dropdown.Divider />
-
-                                                <Dropdown.Item>
-                                                    <FontAwesomeIcon icon={faRocket} className="text-danger me-2" /> Subscription Plan
-                                                </Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
-                                    </div>
-                                    <div className="d-flex justify-content-between mt-2 px-2">
-                                        <span className="text-nowrap">
-                                            <FontAwesomeIcon icon={faBookmark} className="me-2 "/>
-                                            {student.subscription?.name} / <span className="text-success">
-                                            $</span> {student.subscription?.costForClass} for class
-                                        </span>
-                                        <Dropdown as={ButtonGroup}>
-                                            <Dropdown.Toggle split as={Button} variant="link" className="text-dark me-2 p-0">
-                                                <FontAwesomeIcon icon={faPencil} />
-                                            </Dropdown.Toggle>
-                                            <Dropdown.Menu className="dashboard-dropdown dropdown-menu-left mt-2">
-                                                <Dropdown.Item>
-                                                    <FontAwesomeIcon icon={faFileAlt} className="me-2" /> Edit
-                                                </Dropdown.Item>
-                                                <Dropdown.Item>
-                                                    <FontAwesomeIcon icon={faBoxOpen} className="me-2" /> Update
-                                                </Dropdown.Item>
-
-                                                <Dropdown.Divider />
-
-                                                <Dropdown.Item>
-                                                    <FontAwesomeIcon icon={faRocket} className="text-danger me-2" /> Subscription Plan
-                                                </Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
-                                    </div>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -267,7 +211,7 @@ const SingleStudent = () => {
                                                         <Card.Body className="pt-2 pb-4 px-0">
                                                             <div className="d-flex mt-2 px-2" key={t.id}>
                                                                 <FontAwesomeIcon icon={faBookmark} className="me-2 text__orange" />
-                                                                <h6>Regular Classes</h6>
+                                                                <h6>Регулярные занятия</h6>
                                                             </div>
                                                             {t.weekDays?.map((f, k) =>
                                                                 <div className="d-flex justify-content-between custom__prop-line mt-2 px-2" key={k}>
@@ -295,10 +239,69 @@ const SingleStudent = () => {
                             </Card>
                         </Col>
                     </Row>
-                    <Row className="mt-2">
+                </Col>
+                <Col xs={12} xl={8}>
+                    <Row className="mt-0 mb-2">
                         <Col>
                             <Card>
-                                <Card.Body className="p-2">
+                                <Card.Body className="p-2 pb-4">
+                                    <div className="d-flex justify-content-between align-items-center mb-4 mt-3 me-2">
+                                        <h5 className="m-0">
+                                            <FontAwesomeIcon icon={faIdCard} className="text-danger mx-2" />
+                                            Абонементы
+                                        </h5>
+                                        <Dropdown as={ButtonGroup}>
+                                            <Dropdown.Toggle split as={Button} variant="link" className="text-dark p-0">
+                                                <FontAwesomeIcon icon={faPlus} />
+                                            </Dropdown.Toggle>
+                                            <Dropdown.Menu className="dashboard-dropdown dropdown-menu-left mt-2">
+                                                <Dropdown.Item>
+                                                    <FontAwesomeIcon icon={faFileAlt} className="me-2" /> Edit
+                                                </Dropdown.Item>
+                                                <Dropdown.Item>
+                                                    <FontAwesomeIcon icon={faBoxOpen} className="me-2" /> Update
+                                                </Dropdown.Item>
+
+                                                <Dropdown.Divider />
+
+                                                <Dropdown.Item>
+                                                    <FontAwesomeIcon icon={faRocket} className="text-danger me-2" /> Subscription Plan
+                                                </Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </div>
+                                    <div className="d-flex justify-content-between custom__prop-line mt-2 px-2">
+                                        <span className="text-nowrap">
+                                            <FontAwesomeIcon icon={faBookmark} className="me-2 "/>
+                                            {student.subscription?.name} / <span className="text-success">
+                                            $</span> {student.subscription?.costForClass} for class
+                                        </span>
+                                        <Dropdown as={ButtonGroup}>
+                                            <Dropdown.Toggle split as={Button} variant="link" className="text-dark me-2 p-0">
+                                                <FontAwesomeIcon icon={faPencil} />
+                                            </Dropdown.Toggle>
+                                            <Dropdown.Menu className="dashboard-dropdown dropdown-menu-left mt-2">
+                                                <Dropdown.Item>
+                                                    <FontAwesomeIcon icon={faFileAlt} className="me-2" /> Edit
+                                                </Dropdown.Item>
+                                                <Dropdown.Item>
+                                                    <FontAwesomeIcon icon={faBoxOpen} className="me-2" /> Update
+                                                </Dropdown.Item>
+
+                                                <Dropdown.Divider />
+
+                                                <Dropdown.Item>
+                                                    <FontAwesomeIcon icon={faRocket} className="text-danger me-2" /> Subscription Plan
+                                                </Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card>
+                                <Card.Body className="p-2 pb-4">
                                     <div className="mt-3">
                                         <div className="d-flex justify-content-between align-items-center mb-4 me-2">
                                             <h5 className="m-0">
@@ -326,7 +329,7 @@ const SingleStudent = () => {
                                             </Dropdown>
                                         </div>
 
-                                        <div className={`py-3 px-2 mb-2 rounded-1`}>
+                                        <div className={`rounded-1`}>
                                             <div className="d-flex justify-content-between align-items-center custom__prop-line mt-2 px-2">
                                                 <div className="d-flex">
                                                     <span className="text-nowrap fw-bold me-2">{student.discount?.discount_type.name}</span>
@@ -359,8 +362,6 @@ const SingleStudent = () => {
                             </Card>
                         </Col>
                     </Row>
-                </Col>
-                <Col xs={12} xl={8}>
                     <Row className="mt-0 mb-2">
                         <Col>
                             <Card>
@@ -414,18 +415,55 @@ const SingleStudent = () => {
                                                         >
                                                             {el.regular_classes?.map((t, j) =>
                                                                 <Tab eventKey={j} title={t.name} key={t.id}>
+
+
                                                                     {t.single_classes?.map((s) =>
-                                                                        <div className={
-                                                                            `bg-${s.classState === 'запланирован'
-                                                                                ? 'light' : 'done'}  d-flex m-1 flex-column text-center px-2 py-2 bg-light rounded-1 border border-1 border-light`
-                                                                        } key={s.id}>
-                                                                            <div className="d-flex justify-content-center align-items-center font__s-6">
-                                                                                {s.courseTypeId === 1 ? <FontAwesomeIcon icon={faChalkboardUser} className="text-dark me-1" />
-                                                                                    : <FontAwesomeIcon icon={faUsers} className="text-dark me-1" />}
-                                                                                <span className="font__s-6">{s.day}</span>
+                                                                        <OverlayTrigger
+                                                                            key={s.id}
+                                                                            trigger="click"
+                                                                            placement="auto"
+                                                                            shouldUpdatePosition={true}
+                                                                            overlay={(
+                                                                                <Popover id="popover-basic">
+                                                                                    <Popover.Header as="h3">
+                                                                                        <div className="d-flex justify-content-between">
+                                                                                            <span className="me-2">{s.course_type?.name}</span>
+                                                                                            <span>{s?.classState}</span>
+                                                                                        </div>
+                                                                                    </Popover.Header>
+                                                                                    <Popover.Body>
+                                                                                        <div className="d-flex justify-content-between">
+                                                                                            <span>Тип:</span>
+                                                                                            <span>{s?.course_type.name}</span>
+                                                                                        </div>
+                                                                                        <div className="d-flex justify-content-between">
+                                                                                            <span>Время:</span>
+                                                                                            <span>{s?.timeStart}, {s?.durationLong}мин</span>
+                                                                                        </div>
+                                                                                        <div className="d-flex justify-content-between">
+                                                                                            <span>Филиал:</span>
+                                                                                            <span className="text-end">{el?.branch.name}, <br/> {s?.room.name}</span>
+                                                                                        </div>
+                                                                                        <div className="d-flex justify-content-between">
+                                                                                            <span>Педагог:</span>
+                                                                                            <span>{el?.teacher?.name}</span>
+                                                                                        </div>
+                                                                                        <div className="d-flex justify-content-between custom__prop-line">
+                                                                                            <span>Предмет:</span>
+                                                                                            <span>{s?.course.name}</span>
+                                                                                        </div>
+
+                                                                                    </Popover.Body>
+                                                                                </Popover>
+                                                                            )} >
+                                                                            <div className={`bg-${s.classState === 'запланирован' ? 'light' : 'done'} cursor-pointer  d-flex m-1 flex-column text-center px-2 py-2 bg-light rounded-1 border border-1 border-light`} key={s.id}>
+                                                                                <div className="d-flex justify-content-center align-items-center font__s-6">
+                                                                                    {s.courseTypeId === 1 ? <FontAwesomeIcon icon={faChalkboardUser} className="text-dark me-1" /> : <FontAwesomeIcon icon={faUsers} className="text-dark me-1" />}
+                                                                                    <span className="font__s-6">{s.day}</span>
+                                                                                </div>
+                                                                                <span className="font__s-6">{s.dayDate}</span>
                                                                             </div>
-                                                                            <span className="font__s-6">{s.dayDate}</span>
-                                                                        </div>
+                                                                        </OverlayTrigger>
                                                                     )}
                                                                 </Tab>
                                                             )}
